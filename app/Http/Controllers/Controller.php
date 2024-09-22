@@ -18,5 +18,8 @@ class Controller extends BaseController
     {
         return view('login');
     }
-    
+    public function welcome()
+    {
+        return view('layouts.formulario_now');
+    }
 }
