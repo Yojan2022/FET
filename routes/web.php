@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 
 /* Rutas antiguas - Ancient routes */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('index');
-});
+}); */
 
 Route::get('/home', [Controller::class, 'index'])->name('home');
 Route::get('/welcome', [Controller::class, 'welcome'])->name('welcome');
@@ -19,3 +19,8 @@ Route::get('/welcome', [Controller::class, 'welcome'])->name('welcome');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+/* Ruta para el inicio del formulario */
+Route::get('/', [Controller::class, 'form'])->name('form.index');
+/* Ruta para poder buscar en el book */
+Route::post('/buscar', [Controller::class, 'search'])->name('form.search');
