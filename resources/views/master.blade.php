@@ -23,5 +23,17 @@
 				});
 			</script>
 		@endif
+		@if (session('last_login'))
+			<script>
+				Swal.fire({
+					position: "top-end",
+					icon: "success",
+					title: "Última conexión",
+					text: "{{ session('last_login') }}",
+					showConfirmButton: false,
+					timer: 2000
+				});
+			</script>
+		@endif
 	</body>
 </html>

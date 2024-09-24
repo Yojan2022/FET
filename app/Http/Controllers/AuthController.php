@@ -34,19 +34,25 @@ class AuthController extends Controller
         // Intentar autenticar al usuario
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            $user->last_login_at = now(); // Usar el helper now() de Laravel
-        
+            $lastLogin = $user->last_login_at; // Guardamos la última fecha de inicio de sesión
+
+            // Actualizamos la última fecha de login a la fecha actual
+            $user->last_login_at = now();
+            
             try {
-                $user->save(); // Intentar guardar los cambios en la base de datos
+                $user->save(); // Guardamos los cambios
             } catch (\Exception $e) {
-                // Captura el error y redirige con el mensaje de error
                 return redirect()->back()->withErrors(['error' => 'Error al guardar el último inicio de sesión: ' . $e->getMessage()])->withInput();
             }
-        
-            // Redirigir al usuario a la página principal después de iniciar sesión
+
+            // Almacenamos el mensaje de la última conexión en la sesión
+            $lastLogin = $user->last_login_at;
+
+            session()->flash('last_login', $lastLogin ? $lastLogin->format('d-m-Y H:i:s') : 'Esta es tu primera vez iniciando sesión.');
+
+            // Redirigir al usuario a la página principal
             return redirect()->intended('/');
         }
-       
 
         // Redirigir de vuelta si las credenciales son incorrectas
         return redirect()->back()->withErrors(['error' => 'Credenciales incorrectas'])->withInput();
