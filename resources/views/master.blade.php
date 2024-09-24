@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-      @include('layouts.partials.head')
-    </head>
+    @include('layouts.partials.head')
+		@section('css')
+		@show
+  </head>
 	<body>
 		@include('layouts.partials.nav')
 		@include('layouts.partials.carruself')
-    @include('layouts.partials.info')
     @section('content')
     @show
 		@include('layouts.partials.foto')

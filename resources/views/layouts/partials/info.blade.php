@@ -1,3 +1,11 @@
+<div id="fh5co-intro">
+	<div class="row animate-box">
+		<div class="col-md-12 col-md-offset-0 text-center">
+			<h2>Mi partida de bautismo</h2>
+			<span>Algeciras Huila</span>
+		</div>
+	</div>
+</div>
 <div class="row">
 	<div class="col-md-3 col-md-push-8 animate-box">
 		<h3>Buscar mi partida de bautismo</h3>

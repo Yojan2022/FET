@@ -1,6 +1,8 @@
 @extends('master')
 
 @section('content')
+
+@include('layouts.partials.info')
 	<header>		
     <form class="d-flex" role="search" action="{{ route('form.search') }}" method="POST">
       @csrf

@@ -50,12 +50,3 @@
 		  </ul>
 		</div>
 	</aside>
-  <div id="fh5co-intro">
-		<div class="row animate-box">
-			<div class="col-md-12 col-md-offset-0 text-center">
-				<h2>Mi partida de bautismo</h2>
-				<span>Algeciras Huila</span>
-			</div>
-		</div>
-	</div>
-	

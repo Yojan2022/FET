@@ -43,7 +43,7 @@ class Controller extends BaseController
         if ($books->isEmpty()) {
             return redirect()->back()->with('error', 'No te encuentras en nuestra base de datos o verifica si tu nombre esta bien escrito.');
         } else {
-            return view('books.results', ['books' => $books]);
+            return view('layouts.result_formulario', ['books' => $books]);
         }
     }
 }
