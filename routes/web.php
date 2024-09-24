@@ -6,10 +6,6 @@ use App\Http\Controllers\Controller;
 
 /* Rutas antiguas - Ancient routes */
 
-/* Route::get('/', function () {
-    return view('index');
-}); */
-
 Route::get('/home', [Controller::class, 'index'])->name('home');
 Route::get('/welcome', [Controller::class, 'welcome'])->name('welcome');
 /* Route::get('/login', [App\Http\Controllers\Controller::class, 'index_login'])->name('login'); */ /* Antiguo login no funcional, solo vista - Old login not functional, view only */
