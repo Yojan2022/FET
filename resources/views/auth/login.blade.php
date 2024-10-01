@@ -2,7 +2,13 @@
 <html lang="en">
 
 <head>
-  @include('layouts/partials/head')
+	<title>Diócesis de Neiva Vicaría Sagrada Familia Parroquia Nuestra Señora de Lourdes Algecirass</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+	<link rel="stylesheet" href="{{ asset('images/icono.ico') }}">
 </head>
 
 <body class="img js-fullheight" style="background-image: url(images/img-2.jpg);">
@@ -22,7 +28,7 @@
 						<form action="{{ route('login') }}" method="post" name="login_form" class="signin-form">
               @csrf
 							<div class="form-group">
-								<input type="email" name="email" id="email" class="form-control" placeholder="Correo" required value="{{ old('email') }}" autocomplete="email" autofocus>
+								<input type="text" name="username" class="form-control" id="username" placeholder="username" value="{{ old('username') }}" required autofocus>
 							</div><br>
 							<div class="form-group">
 								<input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required autocomplete="current-password">
@@ -40,10 +46,10 @@
 		</div>
 	</section>
 	<!--opcion para poder visualizar la clave escrita-->
-	<script src="js/login.min.js"></script>
-	<script src="js/main.js"></script>
-  <script type="text/JavaScript" src="js/sha512.js"></script>
-	<script type="text/JavaScript" src="js/forms.js"></script>
+	<script type="text/JavaScript" src="{{ asset('js/login.min.js') }}"></script>
+	<script type="text/JavaScript" src="{{ asset('js/main.js') }}"></script>
+	<script type="text/JavaScript" src="{{ asset('js/sha512.js') }}"></script>
+	<script type="text/JavaScript" src="{{ asset('js/forms.js') }}"></script>
 </body>
 
 </html>
