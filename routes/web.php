@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\AdminController;
 
 /* Rutas antiguas - Ancient routes */
 
@@ -20,3 +21,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', [Controller::class, 'form'])->name('form.index');
 /* Ruta para poder buscar en el book */
 Route::post('/buscar', [Controller::class, 'search'])->name('form.search');
+
+/* Rutas para el administrador */
+Route::middleware(['auth'])->group(function () {
+  Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+});
