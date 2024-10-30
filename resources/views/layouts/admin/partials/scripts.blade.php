@@ -9,3 +9,5 @@
 <script src="{{ asset('AdminLTE/dist/js/demo.js') }}"></script>
 
 <script src="{{ asset('AdminLTE/dist/js/pages/dashboard3.js') }}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
