@@ -60,7 +60,7 @@ class AuthController extends Controller
         session()->flash('last_login', $message);
 
         // Redirigir al usuario a la página principal o a la página previa
-        return redirect()->intended('/admin');
+        return redirect()->intended('/admin/dashboard');
     }
 
     // Redirigir de vuelta si las credenciales son incorrectas

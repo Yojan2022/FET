@@ -75,5 +75,7 @@
     @include('layouts.admin.partials.footer')
   </div>
   @include('layouts.admin.partials.scripts')
+  @section('scripts')
+  @show
 </body>
 </html>
