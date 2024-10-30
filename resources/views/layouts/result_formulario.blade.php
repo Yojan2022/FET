@@ -49,7 +49,7 @@
             <td>{{ $book->page }}</td>
             <td>{{ $book->record }}</td>
             <td>
-              <a type="button" class="custom-btn" href="">
+              <a type="button" class="custom-btn" href="{{ route('form.solicitude', ['name' => $book->name, 'last_name' => $book->last_name]) }}">
                 <i class="bi bi-plus"></i>
               </a>
             </td>

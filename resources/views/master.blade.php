@@ -13,17 +13,30 @@
 		@include('layouts.partials.foto')
 		@include('layouts.partials.footer')
 		@include('layouts.partials.script')
-		@if(session('error'))
-			<script>
-				Swal.fire({
-					position: "top-end",
-					icon: "error",
-					title: "{{ session('error') }}",
-					showConfirmButton: false,
-					timer: 2000
-				});
-			</script>
+		@if ($errors->any())
+    <script>
+        @foreach ($errors->all() as $error)
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "{{ $error }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        @endforeach
+    </script>
 		@endif
+		@if (session('success'))
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+    @endif
 		@if (session('last_login'))
 			<script>
 				Swal.fire({

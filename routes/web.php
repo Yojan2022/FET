@@ -21,6 +21,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', [Controller::class, 'form'])->name('form.index');
 /* Ruta para poder buscar en el book */
 Route::post('/buscar', [Controller::class, 'search'])->name('form.search');
+/* Ruta para inicio de la solicitud */
+Route::get('/solicitud', [Controller::class, 'showSolicitude'])->name('form.solicitude');
+Route::post('/registro-busqueda', [Controller::class, 'searchSolicitude'])->name('register.search');
+Route::post('/store', [Controller::class, 'store'])->name('applications.store');
 
 /* Rutas para el administrador */
 Route::middleware(['auth'])->group(function () {
