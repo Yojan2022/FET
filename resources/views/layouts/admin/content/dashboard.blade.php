@@ -31,7 +31,7 @@
         <div class="icon">
           <i class="fas fa-file-alt"></i>
         </div>
-        <a href="{{ route('requests.index') }}" class="small-box-footer">
+        <a href="{{ route('applications.index') }}" class="small-box-footer">
           Más información <i class="fas fa-arrow-circle-right"></i>
         </a>
       </div>
@@ -48,7 +48,7 @@
         <div class="icon">
           <i class="fas fa-plus"></i>
         </div>
-        <a href="{{ route('requests.create') }}" class="small-box-footer">
+        <a href="{{ route('applications.create') }}" class="small-box-footer">
           Más información <i class="fas fa-arrow-circle-right"></i>
         </a>
       </div>
@@ -65,7 +65,7 @@
         <div class="icon">
           <i class="fas fa-users"></i>
         </div>
-        <a href="{{ route('people.index') }}" class="small-box-footer">
+        <a href="{{ route('book.index') }}" class="small-box-footer">
           Más información <i class="fas fa-arrow-circle-right"></i>
         </a>
       </div>

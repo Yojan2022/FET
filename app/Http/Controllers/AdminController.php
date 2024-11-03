@@ -26,6 +26,7 @@ class AdminController extends Controller
         return view('layouts.admin.content.dashboard', compact('userCount', 'bookCount', 'applicationCount'));
     }
 
+    /* Funciones para los Books */
     // Mostrar la lista de libros
     public function indexbook()
     {
@@ -121,6 +122,7 @@ class AdminController extends Controller
         return redirect()->route('book.index')->with('success', 'Libro eliminado exitosamente.');
     }
 
+    /* Funciones para los Users */
     // Listar todos los usuarios
     public function indexUsers()
     {
@@ -194,5 +196,125 @@ class AdminController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')->with('success', 'Usuario eliminado exitosamente.');
+    }
+
+    /* Funciones de las Applications */
+    // Mostrar la lista de aplicaciones
+    public function indexApplications()
+    {
+        // Obtener todas las aplicaciones
+        $applications = Application::all();
+
+        // Retornar la vista de lista de aplicaciones con los datossidebar
+        return view('layouts.admin.content.applications.index', compact('applications'));
+    }
+
+    // Mostrar el formulario para crear una nueva aplicación
+    public function createApplications()
+    {
+        // Retornar la vista para crear una nueva aplicación
+        return view('layouts.admin.content.applications.create');
+    }
+
+    // Almacenar una nueva aplicación en la base de datos
+    public function storeApplications(Request $request)
+    {
+        // Validar los datos del formulario
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
+            'father' => 'required|string|max:255',
+            'mom' => 'required|string|max:255',
+            'godfather' => 'required|string|max:255',
+            'godmother' => 'required|string|max:255',
+            'christening' => 'required|date',
+            'solicitante' => 'required|string|max:255',
+            'telephone_1' => 'required|numeric',
+            'telephone_2' => 'nullable|numeric',
+            'address' => 'required|string|max:255',
+            'authenticated' => 'required|in:si,no', // Validar que sea sí o no
+        ], [
+            'name.required' => 'El nombre es obligatorio.',
+            'last_name.required' => 'El apellido es obligatorio.',
+            'date_of_birth.required' => 'La fecha de nacimiento es obligatoria.',
+            'father.required' => 'El nombre del padre es obligatorio.',
+            'mom.required' => 'El nombre de la madre es obligatorio.',
+            'godfather.required' => 'El nombre del padrino es obligatorio.',
+            'godmother.required' => 'El nombre de la madrina es obligatorio.',
+            'christening.required' => 'La fecha de bautizo es obligatoria.',
+            'solicitante.required' => 'El nombre del solicitante es obligatorio.',
+            'telephone_1.required' => 'El teléfono 1 es obligatorio.',
+            'address.required' => 'La dirección es obligatoria.',
+            'authenticated.required' => 'Es obligatorio seleccionar si está autenticada.',
+        ]);
+
+        // Crear la nueva aplicación
+        Application::create($validatedData);
+
+        // Redirigir a la lista de aplicaciones con un mensaje de éxito
+        return redirect()->route('applications.index')->with('success', 'Aplicación creada correctamente.');
+    }
+
+    // Mostrar el formulario para editar una aplicación existente
+    public function editApplications($id)
+    {
+        // Buscar la aplicación por su ID
+        $application = Application::findOrFail($id);
+
+        // Retornar la vista de edición con los datos de la aplicación
+        return view('layouts.admin.content.applications.edit', compact('application'));
+    }
+
+    // Actualizar una aplicación existente en la base de datos
+    public function updateApplications(Request $request, $id)
+    {
+        // Validar los datos del formulario
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
+            'father' => 'required|string|max:255',
+            'mom' => 'required|string|max:255',
+            'godfather' => 'required|string|max:255',
+            'godmother' => 'required|string|max:255',
+            'christening' => 'required|date',
+            'solicitante' => 'required|string|max:255',
+            'telephone_1' => 'required|numeric',
+            'telephone_2' => 'nullable|numeric',
+            'address' => 'required|string|max:255',
+            'authenticated' => 'required|in:si,no', // Asegúrate de que solo acepte estos valores
+        ], [
+            'name.required' => 'El nombre es obligatorio.',
+            'last_name.required' => 'El apellido es obligatorio.',
+            'date_of_birth.required' => 'La fecha de nacimiento es obligatoria.',
+            'father.required' => 'El nombre del padre es obligatorio.',
+            'mom.required' => 'El nombre de la madre es obligatorio.',
+            'godfather.required' => 'El nombre del padrino es obligatorio.',
+            'godmother.required' => 'El nombre de la madrina es obligatorio.',
+            'christening.required' => 'La fecha del bautizo es obligatoria.',
+            'solicitante.required' => 'El nombre del solicitante es obligatorio.',
+            'telephone_1.required' => 'El teléfono 1 es obligatorio.',
+            'address.required' => 'La dirección es obligatoria.',
+            'authenticated.required' => 'El estado de autenticación es obligatorio.',
+        ]);
+
+        // Buscar la aplicación por su ID y actualizar con los datos validados
+        $application = Application::findOrFail($id);
+        $application->update($validatedData);
+
+        // Redirigir a la lista de aplicaciones con un mensaje de éxito
+        return redirect()->route('applications.index')->with('success', 'Aplicación actualizada correctamente.');
+    }
+
+    // Eliminar una aplicación de la base de datos
+    public function destroyApplications($id)
+    {
+        // Buscar la aplicación por su ID y eliminarla
+        $application = Application::findOrFail($id);
+        $application->delete();
+
+        // Redirigir a la lista de aplicaciones con un mensaje de éxito
+        return redirect()->route('applications.index')->with('success', 'Aplicación eliminada correctamente.');
     }
 }

@@ -8,9 +8,19 @@
       <div class="image">
         <img src="{{ asset('AdminLTE/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
       </div>
-      <div class="info">
-        <a href="#" class="d-block">{{ Auth::user()->username }}</a>
+      <div class="col info">
+        <div data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="{{ Auth::user()->username }}">
+          <div style="color:white">{{ Auth::user()->username }}</div>
+        </div>
       </div>
+      <div class="col-auto info float-right mt-2">
+        <a href="{{ route('logout') }}" class="d-block" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Cerrar Sesion" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </div>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+      </form>
     </div>
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -26,7 +36,7 @@
         
         <!-- Solicitudes -->
         <li class="nav-item">
-          <a href="{{ route('requests.index') }}" class="nav-link">
+          <a href="{{ route('applications.index') }}" class="nav-link">
             <i class="nav-icon fas fa-file-alt"></i>
             <p>Solicitudes</p>
           </a>

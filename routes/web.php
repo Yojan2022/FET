@@ -32,12 +32,12 @@ Route::middleware(['auth'])->group(function () {
 
     /* Rutas de prueba para el modo administrador */
     // Rutas para las solicitudes de partidas
-    Route::get('/requests', [AdminController::class, 'indexRequests'])->name('requests.index');
-    Route::get('/requests/create', [AdminController::class, 'createRequest'])->name('requests.create');
-    Route::post('/requests', [AdminController::class, 'storeRequest'])->name('requests.store');
-    Route::get('/requests/{id}/edit', [AdminController::class, 'editRequest'])->name('requests.edit');
-    Route::put('/requests/{id}', [AdminController::class, 'updateRequest'])->name('requests.update');
-    Route::delete('/requests/{id}', [AdminController::class, 'destroyRequest'])->name('requests.destroy');
+    Route::get('/applications', [AdminController::class, 'indexApplications'])->name('applications.index');
+    Route::get('/applications/create', [AdminController::class, 'createApplications'])->name('applications.create');
+    Route::post('/applications', [AdminController::class, 'storeApplications'])->name('applications.store');
+    Route::get('/applications/{id}/edit', [AdminController::class, 'editApplications'])->name('applications.edit');
+    Route::put('/applications/{id}', [AdminController::class, 'updateApplications'])->name('applications.update');
+    Route::delete('/applications/{id}', [AdminController::class, 'destroyApplications'])->name('applications.destroy');
 
     // Rutas para las personas en las partidas
     Route::get('/book', [AdminController::class, 'indexbook'])->name('book.index');
