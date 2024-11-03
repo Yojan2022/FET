@@ -34,7 +34,7 @@
 
         <!-- Personas en Partidas -->
         <li class="nav-item">
-          <a href="{{ route('people.index') }}" class="nav-link">
+          <a href="{{ route('book.index') }}" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>Personas en Partidas</p>
           </a>
