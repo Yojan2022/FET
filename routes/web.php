@@ -41,11 +41,11 @@ Route::middleware(['auth'])->group(function () {
 
     // Rutas para las personas en las partidas
     Route::get('/book', [AdminController::class, 'indexbook'])->name('book.index');
-    Route::get('/book/create', [AdminController::class, 'createPerson'])->name('book.create');
-    Route::post('/book', [AdminController::class, 'storePerson'])->name('book.store');
-    Route::get('/book/{id}/edit', [AdminController::class, 'editPerson'])->name('book.edit');
-    Route::put('/book/{id}', [AdminController::class, 'updatePerson'])->name('book.update');
-    Route::delete('/book/{id}', [AdminController::class, 'destroyPerson'])->name('book.destroy');
+    Route::get('/book/create', [AdminController::class, 'createBook'])->name('book.create');
+    Route::post('/book', [AdminController::class, 'storeBook'])->name('book.store');
+    Route::get('/book/{id}/edit', [AdminController::class, 'editBook'])->name('book.edit');
+    Route::put('/book/{id}', [AdminController::class, 'updateBook'])->name('book.update');
+    Route::delete('/book/{id}', [AdminController::class, 'destroyBook'])->name('book.destroy');
 
     // Rutas para los usuarios - funcional
     Route::get('/users', [AdminController::class, 'indexUsers'])->name('users.index');
